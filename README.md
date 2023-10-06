@@ -10,7 +10,7 @@ The overarching goal of this project are to demonstrate and help reinforce under
 <li>Bare bones of game/player structure now exists
 </ul>
 
-### To do (for 100% self satisfaction):
+### Next on the To Do List:
 <ul>
 <li>Prevent overwriting a location
 <li>Track win conditions
