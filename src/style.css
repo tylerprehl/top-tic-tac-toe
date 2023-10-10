@@ -1,5 +1,5 @@
 :root {
-    --ttt-board-width: max(60vw, 200px);
+    --ttt-board-width: min(max(60vw, 200px), max(calc(100vh - 200px), 120px));
     --ttt-cell-width: calc(0.33333 * var(--ttt-board-width))
 }
 
@@ -13,6 +13,7 @@ body {
 h1 {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 .new-game-form {
@@ -24,9 +25,10 @@ h1 {
 
 .name-input-container {
     display: flex;
-    width: 400px;
-    /* border: solid aqua 3px; */
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    row-gap: 10px;
 }
 
 .board-container {

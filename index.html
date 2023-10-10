@@ -9,10 +9,10 @@
 </head>
 <body>
     <h1>The Odin Project - Tic Tac Toe</h1>
-    <form action="src/game.js" method="post" class="new-game-form" >
+    <form action="#" method="post" onsubmit="GameController.initializeGame()" class="new-game-form" >
         <div class="name-input-container">
-            <input type="text" placeholder="Player 1..." class="name-input" id="player_1">
-            <input type="text" placeholder="Player 2..." class="name-input" id="player_2">
+            <input type="text" placeholder="Player 1..." class="name-input" id="player-1">
+            <input type="text" placeholder="Player 2..." class="name-input" id="player-2">
         </div>
         <input type="submit" value="Start New Game">
     </form> 

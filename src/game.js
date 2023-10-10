@@ -67,6 +67,7 @@ const GameController = (() => {
     let player1 = {};
     let player2 = {};
     let activePlayer = {};
+    let winner = "";
 
     const getBoard = () => board;
 
@@ -74,18 +75,49 @@ const GameController = (() => {
         activePlayer = activePlayer === player1 ? player2 : player1;
     };
 
-    const initializeGame = (player1Name, player2Name) => {
-        player1 = Player(player1Name, "1");
-        player2 = Player(player2Name, "2");
+    const initializeGame = () => {
+        e.preventDefault();
+        const player1Input = document.querySelector('input#player-1');
+        const player2Input = document.querySelector('input#player-2');
+        
+        player1 = Player(player1Input.value, "1");
+        player2 = Player(player2Input.value, "2");
         activePlayer = player1;
-        console.log(``)
+        console.log(``);
     };
 
     const playRound = (position) => {
         board.makeMark(position, activePlayer);
         board.printBoard();
+        let gameOver = determineIfGameOver();
+        if (gameOver) {
+            // do end of game activities
+            return;
+        }
         switchActivePlayer();
     };
+
+    const determineIfGameOver = () => {
+        bool_Over = false;
+        // all spaces are taken
+        
+
+        // horizontal win
+
+
+        // vertical win
+
+
+        // left-right diagonal win
+
+
+        // right-left diagonal win
+
+    }
+
+    const determineWinner = () => {
+        // check 
+    }
 
     return { initializeGame,
         playRound,
@@ -95,9 +127,26 @@ const GameController = (() => {
 
 })();
 
-GameController.initializeGame("Tyler", "Max");
+const DisplayController = (() => {
+    const boardCells = document.querySelectorAll('.ttt-cell');
+
+
+    const ResetGame = () => {
+        const bestOfChoices = document.querySelectorAll('button.best-of-choice');
+        bestOfChoices.forEach(bestOfChoice => bestOfChoice.addEventListener("click", setBestOf))
+    }
+
+
+    return { ResetGame
+        //
+    };
+})();
+
+DisplayController.ResetGame();
+
+/* GameController.initializeGame("Tyler", "Max");
 GameController.getBoard().printBoard();
-GameController.playRound(2);
+GameController.playRound(2); */
 
 /*
 Win conditions on array:
