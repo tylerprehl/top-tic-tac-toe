@@ -1,5 +1,5 @@
 # The Odin Project - Tic Tac Toe
-The JS Tic-Tac-Toe project from The Odin Project
+The JavaScript Tic-Tac-Toe project from The Odin Project
 
 You can access this webpage by visiting: https://tylerprehl.github.io/top-tic-tac-toe/
 <br><br>
