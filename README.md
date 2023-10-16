@@ -7,13 +7,15 @@ The overarching goal of this project are to demonstrate and help reinforce under
 
 ### Complete so far:
 <ul>
-<li>Bare bones of game/player structure now exists
+<li>Game/Player structure is built
+<li>Start New Game function starts a new game with default or provided player names
+<li>Players mark the board by clicking on the board cells
+<li>Cells cannot be overwritten (was previously an issue)
 </ul>
 
 ### Next on the To Do List:
 <ul>
-<li>Prevent overwriting a location
-<li>Track win conditions
+<li>Determine winner logic
 <li>Track player wins
 </ul>
 

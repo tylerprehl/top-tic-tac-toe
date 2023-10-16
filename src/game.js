@@ -1,14 +1,16 @@
-const Player = (name, playerNumber) => {
+const Player = (name, playerNumber, markCharacter) => {
     let winCount = 0;
 
     const getName = () => name;
     const getPlayerNumber = () => playerNumber;
+    const getMarkCharacter = () => markCharacter;
 
     const increaseWinCount = () => winCount+=1;
     const getWinCount = () => winCount;
 
     return { getName, 
         getPlayerNumber, 
+        getMarkCharacter,
         increaseWinCount, 
         getWinCount
     }
@@ -17,14 +19,20 @@ const Player = (name, playerNumber) => {
 
 const Cell = () => {
     let value = "-";
+    let mark = "-";
 
     const getValue = () => value;
+    const getMark = () => mark;
 
     const setMark = (player) => {
         value = player.getPlayerNumber();
+        mark = player.getMarkCharacter();
     };
 
-    return {getValue, setMark};
+    return { getValue,
+        getMark, 
+        setMark
+    };
 };
 
 
@@ -40,6 +48,8 @@ const GameBoard = () => {
 
     const makeMark = (position, player) => {
         board[position].setMark(player);
+        DisplayController.makeMark(position, player);
+        
     };
 
     const printBoard = () => {
@@ -69,24 +79,34 @@ const GameController = (() => {
     let activePlayer = {};
     let winner = "";
 
+    const getPlayer = (playerNumber) => {
+        if (playerNumber === 1) { return player1; }
+        else { return player2; }
+    }
+
     const getBoard = () => board;
 
     const switchActivePlayer = () => {
         activePlayer = activePlayer === player1 ? player2 : player1;
     };
 
-    const initializeGame = () => {
+    const initializeGame = (e) => {
         e.preventDefault();
         const player1Input = document.querySelector('input#player-1');
         const player2Input = document.querySelector('input#player-2');
-        
-        player1 = Player(player1Input.value, "1");
-        player2 = Player(player2Input.value, "2");
+        if (player1Input.value === "") { player1 = Player("Player 1", "1", "X"); } 
+        else { player1 = Player(player1Input.value, "1", "X"); }
+        if (player2Input === "") { player2 = Player("Player 2", "2", "O"); }
+        else { player2 = Player(player2Input.value, "2", "O"); }
+
+        GameController.resetGame();
+
         activePlayer = player1;
-        console.log(``);
+        console.log(`Started Game`);
     };
 
-    const playRound = (position) => {
+    const playRound = (event) => {
+        const position = event.currentTarget.id.slice(1);
         board.makeMark(position, activePlayer);
         board.printBoard();
         let gameOver = determineIfGameOver();
@@ -113,16 +133,24 @@ const GameController = (() => {
 
         // right-left diagonal win
 
+        return bool_Over;
     }
 
     const determineWinner = () => {
         // check 
     }
 
-    return { initializeGame,
+    const resetGame = () => {
+        board.reset();
+        DisplayController.resetGame();
+    }
+
+    return { getPlayer,
+        initializeGame,
         playRound,
         switchActivePlayer,
-        getBoard
+        getBoard,
+        resetGame
     };
 
 })();
@@ -130,19 +158,26 @@ const GameController = (() => {
 const DisplayController = (() => {
     const boardCells = document.querySelectorAll('.ttt-cell');
 
-
-    const ResetGame = () => {
-        const bestOfChoices = document.querySelectorAll('button.best-of-choice');
-        bestOfChoices.forEach(bestOfChoice => bestOfChoice.addEventListener("click", setBestOf))
+    const makeMark = (position, player) => {
+        console.log(`Position: c${position}`);
+        const cellToMark = document.querySelector(`.ttt-cell#c${position}`);
+        cellToMark.textContent = player.getMarkCharacter();
+        cellToMark.removeEventListener('click', GameController.playRound);
     }
 
+    const resetGame = () => {
+        boardCells.forEach(boardCell => {
+            boardCell.textContent = "";
+            boardCell.addEventListener('click', GameController.playRound);
+        });
+    }
 
-    return { ResetGame
-        //
+    return { makeMark,
+        resetGame
     };
 })();
 
-DisplayController.ResetGame();
+// GameController.resetGame();
 
 /* GameController.initializeGame("Tyler", "Max");
 GameController.getBoard().printBoard();
