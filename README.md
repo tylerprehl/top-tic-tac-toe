@@ -17,9 +17,12 @@ The overarching goal of this project are to demonstrate and help reinforce under
 <ul>
 <li>Determine winner logic
 <li>Track player wins
+<li>Denote which player is which marker
+<li>Allow players to switch markers (without resetting score)
+<li>Cooler (properly sized) markers
 </ul>
 
 ### Other interesting things of note:
 <ul>
-<li>None thus far
+<li>Using events and their properties on event listeners
 </ul>

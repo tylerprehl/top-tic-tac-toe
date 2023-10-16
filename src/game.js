@@ -106,7 +106,7 @@ const GameController = (() => {
     };
 
     const playRound = (event) => {
-        const position = event.currentTarget.id.slice(1);
+        const position = event.currentTarget.id.slice(5);
         board.makeMark(position, activePlayer);
         board.printBoard();
         let gameOver = determineIfGameOver();
@@ -159,8 +159,8 @@ const DisplayController = (() => {
     const boardCells = document.querySelectorAll('.ttt-cell');
 
     const makeMark = (position, player) => {
-        console.log(`Position: c${position}`);
-        const cellToMark = document.querySelector(`.ttt-cell#c${position}`);
+        console.log(`Position: cell-${position}`);
+        const cellToMark = document.querySelector(`.ttt-cell#cell-${position}`);
         cellToMark.textContent = player.getMarkCharacter();
         cellToMark.removeEventListener('click', GameController.playRound);
     }
@@ -176,12 +176,6 @@ const DisplayController = (() => {
         resetGame
     };
 })();
-
-// GameController.resetGame();
-
-/* GameController.initializeGame("Tyler", "Max");
-GameController.getBoard().printBoard();
-GameController.playRound(2); */
 
 /*
 Win conditions on array:
