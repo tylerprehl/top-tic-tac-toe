@@ -27,4 +27,5 @@ The overarching goal of this project are to demonstrate and help reinforce under
 ### Other interesting things of note:
 <ul>
 <li>Using events and their properties on event listeners
+<li>Learned about linters (ESLint) and Prettier, and included in the project
 </ul>
