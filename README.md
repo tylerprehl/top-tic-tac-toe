@@ -5,7 +5,7 @@ You can access this webpage by visiting: https://tylerprehl.github.io/top-tic-ta
 <br><br>
 The overarching goal of this project are to demonstrate and help reinforce understanding and use of JavaScript objects (more specifically, factory functions and the module pattern)
 
-11/7/23 - placed on hold in favor of learning more content instead of practicing old skills. There will be more projects to show off my skills in future lessons.
+11/7/23 - placed on hold in favor of learning more content instead of practicing old skills. There will be more projects to show off my skills in future lessons
 
 ### Complete so far:
 <ul>
